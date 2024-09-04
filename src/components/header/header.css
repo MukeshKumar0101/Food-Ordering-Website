@@ -1,0 +1,30 @@
+/* .header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+}
+
+.logo{
+  height: 80px;
+  width: 80px;
+}
+
+.nav-items ul{
+  display: flex;
+  gap: 20px;
+  padding: 0px 20px;
+}
+
+.nav-items ul li{
+  list-style: none;
+  font-size: 20px;
+}
+
+.login-btn{
+  background: blue;
+  border: none;
+  padding: 10px ;
+  color: white;
+  cursor: pointer;
+} */
