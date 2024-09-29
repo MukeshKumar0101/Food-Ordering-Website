@@ -1,43 +1,19 @@
 /** @format */
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
-import { MENU_API } from "../../utils/constant";
 import { Backdrop, CircularProgress } from "@mui/material";
+import useRestaurantMenu from "../../utils/useRestaurantMenu";
+import { IoIosStarHalf } from "react-icons/io";
+import RestaurantCategory from "../RestaurantCategory";
+import UserContext from "../../utils/UserContext";
 
 function RestaurantMenu() {
-  const [resInfo, setResInfo] = useState(null);
-  const [loader, setLoader] = useState(false);
   const { resId } = useParams();
+  const [resInfo, loader] = useRestaurantMenu(resId);
+  const [showIndex, setShowIndex] = useState(null);
 
-  useEffect(() => {
-    setLoader(true);
-    fetchMenu();
-  }, []);
-
-  // const fetchMenu = async () => {
-  //   const data = await fetch(MENU_API + resId);
-  //   const json = await data.json();
-  //   console.log(json);
-  //   setResInfo(json);
-  // };
-  const fetchMenu = async () => {
-    try {
-      const data = await fetch(MENU_API + resId);
-      const json = await data.json();
-      setResInfo(json);
-    } catch (error) {
-      console.error("Error fetching menu:", error);
-    } finally {
-      setLoader(false);
-    }
-  };
-
-  // const { name, price } =
-  //   resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
-  //     ?.card?.itemCards[1]?.card?.info || {};
-  // console.log(name);
-
+  const { loggedInUser } = useContext(UserContext);
+  console.log("menucardsss", loggedInUser);
   const { name, cuisines, costForTwoMessage } =
     resInfo?.data?.cards[2]?.card?.card?.info || {};
 
@@ -45,7 +21,20 @@ function RestaurantMenu() {
     resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
       ?.card || {};
 
-  console.log(itemCards);
+  // console.log(
+  //   "here log",
+  //   resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards
+  // );
+
+  const categories =
+    resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (c) =>
+        c.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    ) || [];
+
+  // console.log("filter category",categories);
+
   return (
     <div className="mt-24">
       {loader ? (
@@ -54,27 +43,24 @@ function RestaurantMenu() {
         </Backdrop>
       ) : (
         <div>
-          <h1>{name}</h1>
-          <p>
-            {cuisines} - {costForTwoMessage}
-          </p>
-          <ul>
-            {itemCards?.length ? (
-              itemCards.map((el, index) => (
-                <li key={index}>
-                  {el.card?.info?.name} - {"Rs"}{" "}
-                  {el.card?.info?.price / 100 ||
-                    el.card?.info?.defaultPrice / 100}
-                </li>
-              ))
-            ) : (
-              <li>items not avialable</li>
-            )}
-            {/* <li>{itemCards[0]?.card?.info?.name}</li>
-        <li>{itemCards[1]?.card?.info?.name}</li> */}
-            <li>Burger</li>
-            <li>Diet Coke</li>
-          </ul>
+          <div className="pb-4">
+            <h1 className="font-bold text-2xl">{name}</h1>
+            <p className="font-semibold text-lg">
+              {cuisines} - {costForTwoMessage}
+            </p>
+          </div>
+          <hr />
+          {categories.map((category, index) => (
+            <RestaurantCategory
+              key={index}
+              data={category?.card?.card}
+              showItems={index === showIndex ? true : false}
+              setShowIndex={() => {
+                setShowIndex(index);
+              }}
+            />
+          ))}
+          <hr />
         </div>
       )}
     </div>

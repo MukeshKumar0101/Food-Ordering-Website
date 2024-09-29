@@ -7,7 +7,7 @@ import { Outlet } from "react-router-dom";
 
 function Layout() {
   return (
-    <div>
+    <div className="flex flex-col justify-between h-screen">
       <Header />
       <Outlet />
       <Footer />

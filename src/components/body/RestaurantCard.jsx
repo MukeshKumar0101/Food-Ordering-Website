@@ -31,23 +31,44 @@ function RestaurantCard(props) {
       <div
         data-testid="resCard"
         className={
-          "res-card m-2 p-4 w-[250px] rounded-lg bg-gray-100 hover:bg-gray-200"
+          "res-card m-2 p-4 w-[250px] rounded-lg bg-gray-200 hover:bg-[#FFAF00] transition-all duration-300 group shadow-lg shadow-black/20 hover:scale-105 flex flex-col items-stretch h-full"
         }>
         <img
-          className="rounded-lg"
+          className="rounded-lg h-48 w-full"
           alt="res-logo"
           width={"200px"}
           src={`https://media-assets.swiggy.com/swiggy/image/upload/${cloudinaryImageId}`}
         />
-        <h3 className="font-bold py-4 text-lg">{name}</h3>
-        <h4>{cuisines.join(", ")}</h4>
-        <h4>{avgRating} stars</h4>
-        <h4>{costForTwo}</h4>
-        <h4>{avgRating}</h4>
+        <h3 className="font-bold py-4 text-lg group-hover:text-white">
+          {name}
+        </h3>
+        <h4 className="group-hover:text-white font-semibold">
+          {cuisines.join(", ")}
+        </h4>
+        <h4 className="group-hover:text-white font-semibold">
+          {avgRating} stars
+        </h4>
+        <h4 className="group-hover:text-white font-semibold">{costForTwo}</h4>
+        <h4 className="group-hover:text-white font-semibold">{avgRating}</h4>
         {/* <Rating initialValue={avgRating} size={"18px"} /> */}
       </div>
     </div>
   );
 }
+
+// Higher Order component
+
+export const withPromotedLabel = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label>Promoted</label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
+};
+
+// input - RestaurantCard ==> resturantCardPromoted
 
 export default RestaurantCard;
