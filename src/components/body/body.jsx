@@ -60,7 +60,7 @@ function Body() {
     //   },
     //   autoHideDuration: 3000,
     // });
-    
+
     toast.dismiss(); // Dismiss the loading toast
     toast.success("Restaurants loaded successfully!", {
       position: "top-right",
@@ -108,7 +108,12 @@ function Body() {
     <>
       <div className="body pt-20">
         {/* Toast Container */}
-        <ToastContainer />
+        <div>
+          <ToastContainer
+            position="top-right"
+            style={{ width: "332px", fontSize: "16px" }}
+          />
+        </div>
         {loader ? (
           <Backdrop open>
             <CircularProgress sx={{ fontSize: "100px", color: "orangered" }} />
@@ -119,28 +124,28 @@ function Body() {
             <div>
               <div className="mb-5">
                 <Slider {...settings}>
-                  <div className="h-[400px] bg-cover bg-center">
+                  <div className="lg:h-[400px] md:h-[300px] sm:h-[200px] bg-cover bg-center">
                     {" "}
                     <img
                       src="https://static.vecteezy.com/system/resources/previews/036/804/331/non_2x/ai-generated-assorted-indian-food-on-dark-wooden-background-free-photo.jpg"
                       alt=""
                     />
                   </div>
-                  <div className="h-[400px] w-full bg-cover bg-center">
+                  <div className="lg:h-[400px] md:h-[300px] sm:h-[200px] w-full bg-cover bg-center">
                     <img
                       className="w-full"
                       src="https://static.vecteezy.com/system/resources/previews/037/236/579/non_2x/ai-generated-beautuful-fast-food-background-with-copy-space-free-photo.jpg"
                       alt=""
                     />
                   </div>
-                  <div className="h-[400px] bg-cover bg-center">
+                  <div className="lg:h-[400px] md:h-[300px] sm:h-[200px] bg-cover bg-center">
                     <img
                       className="w-full"
                       src="https://png.pngtree.com/background/20230417/original/pngtree-burger-ketchup-fast-food-vegetables-background-picture-image_2445024.jpg"
                       alt=""
                     />
                   </div>
-                  <div className="h-[400px] bg-cover bg-center">
+                  <div className="lg:h-[400px] md:h-[300px] sm:h-[200px] bg-cover bg-center">
                     <img
                       className="w-full"
                       src="https://img.freepik.com/free-photo/view-ready-eat-delicious-meal-go_23-2151431768.jpg"
@@ -150,8 +155,8 @@ function Body() {
                 </Slider>
               </div>
 
-              <div className="filter flex justify-center gap-2 px-2 py-5">
-                <div className="flex w-full max-w-[450px]  gap-2">
+              <div className="filter flex sm:flex-row flex-col sm:justify-center items-center  gap-2 px-2 py-5">
+                <div className="flex w-full max-w-[385px]  gap-2">
                   <input
                     type="text"
                     placeholder="Search food"
@@ -159,15 +164,14 @@ function Body() {
                     onChange={(e) => setSearchText(e.target.value)}
                     value={searchText}
                   />
-
-                  <button
-                    className="search-btn bg-[#FFAF00] text-white px-5 py-1 rounded-md border-[2px] border-[#FFAF00] hover:text-[#FFAF00] hover:bg-white font-medium"
-                    onClick={handleSearch}>
-                    Search
-                  </button>
                 </div>
                 <button
-                  className="filter-btn bg-[#FFAF00] text-white px-5 py-1 rounded-md border-[2px] border-[#FFAF00] hover:text-[#FFAF00] hover:bg-white font-medium"
+                  className="search-btn bg-[#FFAF00] max-w-[384px] sm:w-[150px] w-full text-white px-5 py-3 sm:py-3 rounded-md border-[2px] border-[#FFAF00] hover:text-[#FFAF00] hover:bg-white font-medium"
+                  onClick={handleSearch}>
+                  Search
+                </button>
+                <button
+                  className="filter-btn bg-[#FFAF00] max-w-[384px] sm:w-[150px] w-full text-white px-5 py-3 sm:py-3 rounded-md border-[2px] border-[#FFAF00] hover:text-[#FFAF00] hover:bg-white font-medium"
                   onClick={() => {
                     // console.log(listOfRestaurants);
                     setLoader(true);
@@ -190,7 +194,7 @@ function Body() {
               </div> */}
               </div>
             </div>
-            <div className="res-container flex flex-wrap ">
+            <div className="res-container flex justify-center flex-wrap ">
               {filterRestaurantList.map((restaurant) => (
                 <Link to={"/restaurants/" + restaurant.id} key={restaurant.id}>
                   {" "}

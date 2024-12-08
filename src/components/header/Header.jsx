@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "../header/header.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useOnlineStatus from "../../utils/useOnlineStatus";
@@ -15,13 +15,13 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
   const dispatch = useDispatch();
   const onlineStatus = useOnlineStatus();
   const location = useLocation();
   const navigate = useNavigate();
   const cartItems = useSelector((store) => store.cart.items);
   const user = useSelector((store) => store.user);
-  console.log(cartItems);
 
   const handleSignOut = () => {
     signOut(auth)
@@ -45,7 +45,7 @@ function Header() {
       } else {
         dispatch(removeUser());
         navigate("/signin");
-        toast.dismiss(); // Dismiss the loading toast
+        toast.dismiss();
         toast.success("User logged successfully!", {
           position: "top-right",
         });
@@ -72,17 +72,22 @@ function Header() {
     <div>
       <ToastContainer />
       <div className="header z-20 flex items-center bg-[#F26B0F] shadow-md justify-between px-4 fixed top-0 w-full h-16">
-        <a href="/" className="flex items-center gap-3">
+        <a href="/" className="flex items-center gap-3 outline-none">
           <img src={foodlogo} alt="FoodLogo" className="w-20 rounded-md" />
           <span className="self-center text-2xl font-bold whitespace-nowrap text-white">
             YummyBites
           </span>
         </a>
-        <div className="nav-items flex">
-          <ul className="flex gap-4">
-            {/* <li className="text-white flex items-center justify-center font-medium text-xl">
-              Active Status : {onlineStatus ? "✅" : "🔴"}
-            </li> */}
+        <button
+          className="text-white lg:hidden"
+          onClick={() => setMenuOpen(!menuOpen)}>
+          ☰
+        </button>
+        <div
+          className={`nav-items flex flex-col lg:flex-row lg:static fixed top-16 left-0 w-full lg:w-auto bg-[#F26B0F] lg:bg-transparent transition-transform ${
+            menuOpen ? "translate-x-0" : "-translate-x-full"
+          } lg:translate-x-0`}>
+          <ul className="flex flex-col lg:flex-row gap-4">
             {navLinks.map((link) => (
               <li
                 key={link.path}
@@ -90,11 +95,11 @@ function Header() {
                   location.pathname === link.path
                     ? "bg-white text-[#F26B0F] rounded-lg"
                     : "text-white"
-                }  hover:text-[#F26B0F] transition-all flex items-center justify-center hover:bg-white hover:rounded-lg px-4 py-2 font-medium text-xl`}>
+                }  hover:text-[#F26B0F] transition-all flex items-center justify-center hover:bg-white max-w-[150px] lg:max-w-full mx-auto lg:mx-0 hover:rounded-lg px-4 py-2 font-medium text-xl`}>
                 <Link to={link.path}>{link.label}</Link>
               </li>
             ))}
-            <li>
+            <li className="flex justify-center lg:justify-normal pb-4 lg:pb-0">
               {user && (
                 <button
                   onClick={handleSignOut}
