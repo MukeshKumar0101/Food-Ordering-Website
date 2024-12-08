@@ -69,10 +69,10 @@ function LoginForm() {
   return (
     <div className="relative">
       <img className="w-full h-screen" src={loginbg} alt="" />
-      <div className="flex justify-center">
+      <div className="flex justify-center mx-5">
         <form
           onSubmit={(e) => e.preventDefault()}
-          className="absolute w-full top-[200px] bg-black/70 max-w-[500px] mx-auto py-10 px-10">
+          className="absolute w-full  top-[200px] bg-black/70 sm:max-w-[500px] max-w-[320px] mx-auto py-10 px-10">
           <h2 className="text-2xl font-bold text-white text-center pb-2">
             {isSignInForm ? "Sign In" : "Sign Up"}
           </h2>

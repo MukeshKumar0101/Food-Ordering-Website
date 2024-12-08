@@ -67,7 +67,7 @@ class UserClass extends React.Component {
               </p>
             </div>
             <div className="scale-100 hover:scale-110 transition-all">
-              <div class="flex justify-start items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-auto lg:w-full dark:bg-primary-900">
+              <div class="flex justify-start items-center mb-4 rounded-full bg-primary-100 lg:h-auto lg:w-full dark:bg-primary-900">
                 <img
                   src="https://res.cloudinary.com/hz3gmuqw6/image/upload/c_fill,q_auto,w_750/f_auto/tk-traditional-indian-foods-to-taste-in-2022-phpEXAXNS"
                   alt=""
@@ -82,7 +82,7 @@ class UserClass extends React.Component {
               </p>
             </div>
             <div className="scale-100 hover:scale-110 transition-all">
-              <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-auto lg:w-full dark:bg-primary-900">
+              <div class="flex justify-center items-center mb-4  rounded-full bg-primary-100 lg:h-auto lg:w-full dark:bg-primary-900">
                 <img
                   src="https://deorwineblog.b-cdn.net/uploads/2020/10/Real-time-Track-GPS-700x434.jpg"
                   alt=""
@@ -96,7 +96,7 @@ class UserClass extends React.Component {
               </p>
             </div>
             <div className="scale-100 hover:scale-110 transition-all">
-              <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-auto lg:w-full dark:bg-primary-900">
+              <div class="flex justify-center items-center mb-4 rounded-full bg-primary-100 lg:h-auto lg:w-full dark:bg-primary-900">
                 <img
                   src="https://www.bdtask.com/blog/assets/plugins/ckfinder/core/connector/php/uploads/images/promote-your-food-combo-offers.jpg"
                   alt=""
