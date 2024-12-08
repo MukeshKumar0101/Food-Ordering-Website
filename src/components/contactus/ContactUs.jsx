@@ -20,7 +20,7 @@ function ContactUs() {
   }
 
   return (
-    <section className="bg-white dark:bg-gray-900 mt-5">
+    <section className="bg-white dark:bg-gray-900 lg:mt-5 mt-14 ">
       <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
         <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-[#F26B0F] dark:text-white">
           Contact Us
