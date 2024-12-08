@@ -31,7 +31,7 @@ function RestaurantCard(props) {
       <div
         data-testid="resCard"
         className={
-          "res-card m-2 p-4 w-[250px] rounded-lg bg-gray-200 hover:bg-[#FFAF00] transition-all duration-300 group shadow-lg shadow-black/20 hover:scale-105 flex flex-col items-stretch h-full"
+          "res-card m-2 p-4 w-[250px] rounded-lg bg-gray-100 hover:bg-[#FFAF00] transition-all duration-300 group shadow-lg shadow-black/20 hover:scale-105 flex flex-col items-stretch h-full"
         }>
         <img
           className="rounded-lg h-48 w-full"
@@ -39,17 +39,21 @@ function RestaurantCard(props) {
           width={"200px"}
           src={`https://media-assets.swiggy.com/swiggy/image/upload/${cloudinaryImageId}`}
         />
-        <h3 className="font-bold py-4 text-lg group-hover:text-white">
+        <h3 className="font-bold py-4 text-lg text-[#F26B0F] group-hover:text-white">
           {name}
         </h3>
-        <h4 className="group-hover:text-white font-semibold">
+        <h4 className="group-hover:text-white text-gray-500 font-semibold">
           {cuisines.join(", ")}
         </h4>
-        <h4 className="group-hover:text-white font-semibold">
+        <h4 className="group-hover:text-white text-gray-500 font-semibold">
           {avgRating} stars
         </h4>
-        <h4 className="group-hover:text-white font-semibold">{costForTwo}</h4>
-        <h4 className="group-hover:text-white font-semibold">{avgRating}</h4>
+        <h4 className="group-hover:text-white font-semibold text-gray-500">
+          {costForTwo}
+        </h4>
+        <h4 className="group-hover:text-white font-semibold text-gray-500">
+          {avgRating}
+        </h4>
         {/* <Rating initialValue={avgRating} size={"18px"} /> */}
       </div>
     </div>

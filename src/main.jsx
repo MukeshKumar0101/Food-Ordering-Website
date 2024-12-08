@@ -13,10 +13,15 @@ import RestaurantMenu from "./components/restaurant-menu/restaurantMenu.jsx";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore.js";
 import Cart from "./components/Cart.jsx";
-// import Grocery from "./components/Grocery.jsx";
-const Grocery = lazy(() => import("./components/Grocery.jsx"));
+import LoginForm from "./components/LoginForm.jsx";
 
+const Grocery = lazy(() => import("./components/Grocery.jsx"));
 const appRouter = createBrowserRouter([
+  {
+    path: "/signin",
+    element: <LoginForm />,
+    errorElement: <Error />,
+  },
   {
     path: "/",
     element: <Layout />,
