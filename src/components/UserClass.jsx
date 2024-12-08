@@ -37,7 +37,7 @@ class UserClass extends React.Component {
       //   <h2>Location : {location}</h2>
       //   <h4>Contact : @mukeshkumar0101</h4>
       // </div>
-      <section class="bg-white dark:bg-gray-900">
+      <section class="bg-white dark:bg-gray-900 px-2">
         <div class="py-1 px-4 mx-auto max-w-screen-xl sm:py-2 lg:px-6">
           <div class="max-w-screen-md  mx-auto mb-8 lg:mb-16">
             <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-[#F26B0F] dark:text-white">
