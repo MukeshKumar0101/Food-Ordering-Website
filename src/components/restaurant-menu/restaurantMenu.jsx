@@ -28,7 +28,7 @@ function RestaurantMenu() {
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     ) || [];
 
-  // console.log("filter category",categories);
+  console.log("filter category",categories);
 
   const handleCategoryClick = (index) => {
     if (showIndex === index) {

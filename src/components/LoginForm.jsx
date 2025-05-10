@@ -8,10 +8,13 @@ import {
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import loginbg from "../assets/images/loginbg.jpg";
+import { IoEye } from "react-icons/io5";
+import { IoMdEyeOff } from "react-icons/io";
 
 function LoginForm() {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMsg, setErrorMsg] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
@@ -66,6 +69,10 @@ function LoginForm() {
     setIsSignInForm(!isSignInForm);
   };
 
+  const HandleTogglePasword = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div className="relative">
       <img className="w-full h-screen" src={loginbg} alt="" />
@@ -89,21 +96,30 @@ function LoginForm() {
               ref={email}
               type="text"
               placeholder="Email Address"
-              className="p-3 m-2 px-2 rounded-md"
+              className="p-3 m-2 px-2 rounded-md w-full"
             />
             {/* <p className="text-red-600 text-sm font-semibold px-3">{errorMsg}</p> */}
-            <input
-              ref={password}
-              type="password"
-              placeholder="Password"
-              className="p-3 m-2 px-2 rounded-md"
-            />
-            <p className="text-red-600 text-sm font-semibold px-3">
-              {errorMsg}
-            </p>
+            <div className="w-full relative">
+              <input
+                ref={password}
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                className="p-3 m-2  rounded-md w-full"
+              />
+              <p className="text-red-600 text-sm font-semibold px-2">
+                {errorMsg}
+              </p>
+
+              <div
+                className="absolute top-6 right-0 cursor-pointer"
+                onClick={HandleTogglePasword}>
+                {showPassword ? <IoEye /> : <IoMdEyeOff />}
+              </div>
+            </div>
+
             <button
               onClick={handleButtonClick}
-              className="p-3 m-2 bg-[#E50914] hover:bg-[#8d1f25] transition-all text-white rounded-md">
+              className="p-3 m-2 bg-[#E50914] hover:bg-[#8d1f25] w-full transition-all text-white rounded-md">
               {isSignInForm ? "Sign In" : "Sign Up"}
             </button>
           </div>
