@@ -88,7 +88,7 @@ function LoginForm() {
               <input
                 type="text"
                 placeholder="Full Name"
-                className="p-3 m-2 px-2 rounded-md"
+                className="p-3 m-2 px-2 rounded-md w-full"
               />
             )}
 

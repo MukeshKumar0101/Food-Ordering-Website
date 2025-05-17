@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { lazy, Suspense, useEffect, useState } from "react";
+import { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
